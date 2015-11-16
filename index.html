@@ -2,53 +2,105 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>David Bridges</title>
-    <style>
-      h1{
-        font-family: arial, helvetica, sans-serif;
+    <title>FEWD-37 David Bridges</title>
+    <style type = "text/css">
+
+      body{
+          background-color: black;
       }
-      p{
-        font-family: arial, helvetica, sans-serif;
-        width: 600px;
+      header{
+        color:#0077b5;
+        margin-top:-24px;
+        height: 60px;
+        background-color: #363636;
+        border-top-right-radius:6px;
+        border-top-left-radius: 6px;
+      }
+
+      li {
+        float:left;
+        list-style-type: none;
+        display:inline;
+        margin-left: 4px;
+        margin-top: 20px;
+        font-family: arial, sans-serif;
+        font-size:16px;
+      }
+      a{
+        color:white;
+        text-decoration: none;
+      }
+      a:hover{
+        color:#0077b5;
+      }
+      .homework{
+        margin-left:-10px;
+        width:200px;
+      }
+
+      .buttons{
+        float:right;
+        margin-top:-10px;
+        margin-right:18px;
+      }
+      h1{
+        font-family: archer, arial, sans-serif;
+        font-size: 60px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom:0;
+      }
+      .separator{
+        font-weight:bold;
+        color:#0077b5;
+      }
+      .subtext{
+        font-family: archer, arial, sans-serif;
+        font-size:20px;
+        margin-top:6px;
+        text-align: center;
+      }
+      section{
+        box-sizing: border-box;
+        margin:100px auto;
+        width: 400px;
+        text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      }
+      .wrapper{
+        background-color: white;
+        width:980px;
+        border: 1px solid black;
+        border-bottom: none;
+        margin: 16px auto;
       }
       img{
-        margin-top:100px;
-        border-style: solid;
-        border-color: #3c6201;
-        border-radius: 60px;
-        width:300px
+          margin-bottom:-6px;
       }
-      ul{
-        list-style-type: none;
-        font-family: arial, helvetica, sans-serif;
-      }
-      body{
-        background: #d5a039;
-        width:80%;
-        margin:0 auto;
-      }
+
     </style>
   </head>
+  <div class = "wrapper">
   <body>
-    <img src="http://i.imgur.com/COnQwsS.png">
-   <h1>David Bridges</h1>
+    <header>
+      <ul class = "homework">
+        <li>homework:</li>
+        <li><a href="homework1.html">one</a></li>
+        <li class="separator">|</li>
+        <li><a href="homework2.html">two</a></li>
+      </ul>
 
-   <p>
-     I was born in Chicago, Illinois, but grew up mostly in Santa Cruz, California.
-     I've lived in San Francisco 20 years and work as a designer at a tech company.
-   </p>
-
-   <p>stuff I like</p>
-   <ul>
-     <li>Design</li>
-     <li>Photography</li>
-     <li>BBQ</li>
-     <li><a href="http://www.warriors.com" target=_blank>Basketball</a></li>
-   </ul>
-
-   <ul>
-      <li><a href="homework1.html">Week One Homework</a></li>
-   </ul>
-
+      <ul class="buttons">
+        <li><a href= "http://www.dsrbinteractive.com" target="blank"><img src="images/portfolio.png"</a></li>
+        <li><a href = "http://www.facebook.com/david.bridges.5" target="blank"><img src="images/facebook.png"></a></li>
+        <li><a href = "https://www.linkedin.com/in/david-bridges-77731822" target="blank"><img src="images/linked.png"></a></li>
+      </ul>
+    </header>
+    <section>
+      <h1>David Bridges</h1>
+      <p class="subtext">Disgruntled Flash Designer/Photographer<br>
+        trying to learn HTML and Javascript</p>
+    </section>
+      <img src="images/bgImage.png">
   </body>
+</div>
 </html>

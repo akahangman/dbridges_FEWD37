@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Calculators</title>
+    <link rel="stylesheet" href="stylesheet.css" media="screen">
+  </head>
+  <body>
+    <h1>Fahrenheit to Celcius</h1>
+
+    <div class="panel temp">
+      <input type="text" class="temp-f" placeholder="℉">⇄
+      <input type="text" class="temp-c" placeholder="℃">
+    </div>
+
+    <h1>Radius to Circumference</h1>
+
+    <div class="panel circum">
+      <div class="circle">
+      </div>
+      <input type="text" class="circum-r" placeholder="radius">
+      <input type="text" class="circum-c" placeholder="circumference" disabled>
+    </div>
+
+    <h1>Pythagorean Theorem</h1>
+
+    <div class="panel py">
+      <input type="text" class="py-a" placeholder="A">
+      <input type="text" class="py-b" placeholder="B">
+      <input type="text" class="py-c" placeholder="C" disabled>
+    </div>
+
+    <script type="text/javascript" src="interface.js"></script>
+    <script type="text/javascript">
+// Function calculates celcius to fahrenheit
+      function calcCelciusToFarenheit(tempC){
+        var tempF = tempC * (9/5) + 32;
+        return tempF;
+        }
+// Function calculates fahrenheit to celcius
+      function calcFahrenheitToCelcius(tempF){
+          var tempC = (tempF - 32) * 5/9;
+          return tempC;
+          }
+
+// Function calculates Radius to Circumference
+      function calcCircumference(r){
+        var c = 2 * Math.PI * r;
+        return c;
+      }
+
+// Pythagorean Theorem
+    function calcLongestSide(pyA, pyB){
+      var pyC = Math.sqrt((pyA * pyA) + (pyB * pyB));
+      return (pyC);
+    }
+    </script>
+  </body>
+</html>

@@ -13,11 +13,6 @@ function calcPy(event) {
   }
 }
 
-
-
-
-
-
 var r = document.querySelector('.circum-r');
 var c = document.querySelector('.circum-c');
 
@@ -30,12 +25,6 @@ function calcC(event) {
     c.value = '';
   }
 }
-
-
-
-
-
-
 
 var tempF = document.querySelector('.temp-f');
 var tempC = document.querySelector('.temp-c');

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Blog</title>
+
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: #f1f0f5;
+        font-family: sans-serif;
+        font-size: 18px;
+        line-height: 1.4em;
+      }
+      main {
+        margin: 2em auto;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+        background: white;
+        padding: 2em 3em;
+        max-width: 600px;
+      }
+      h1 {
+        margin-top: 0;
+        text-align: center;
+      }
+      article {
+        padding-bottom: 1em;
+        margin-bottom: 2em;
+        border-bottom: 1px solid #ccc;
+      }
+      textarea {
+        display: block;
+        width: 100%;
+      }
+      a {
+        font-weight: bold;
+        text-decoration: none;
+        color: #049cd8;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      textarea,
+      .comment {
+        border: 1px solid #ccc;
+        padding: .5em 1em;
+        margin: 1em 0;
+        border-radius: 5px;
+      }
+      textarea {
+        font-size: inherit;
+      }
+      button {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-bottom-width: 2px;
+        border-radius: 5px; font-size: inherit;
+        color: white;
+        background-color: #049cd8;
+        padding: .5em 1em;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <article>
+        <h1>Some of my favorite movies</h1>
+
+        <p>
+          I saw The Martian over break and thought it was really good, so I thought
+          I would create a short list of some of my favorite movies.
+        </p>
+
+        <ul>
+          <li><a href = "http://www.imdb.com/title/tt0073486/">One Flew Over the Cuckoo's Nest</a></li>
+          <li><a href = "http://www.imdb.com/title/tt0083658/?ref_=nv_sr_1">Blade Runner</a></li>
+          <li><a href = "http://www.imdb.com/title/tt0110057/?ref_=nv_sr_1">Hoop Dreams</a></li>
+          <li><a href = "http://www.imdb.com/title/tt0080684/?ref_=fn_al_tt_1">The Empire Strikes Back</a></li>
+          <li><a href = "http://www.imdb.com/title/tt0073195/?ref_=fn_al_tt_1">Jaws</a></li>
+        </ul>
+
+        <p>
+          What are some of your favorite movies?
+        </p>
+      </article>
+
+      <div class="like">
+        <a href="#" class="like-link">Like</a>
+        (<span class="like-count">0</span>)
+      </div>
+
+      <div id="comments">
+        <!--
+        <div class="comment">
+          You're looking good!
+        </div>
+        -->
+      </div>
+
+      <form id="new-comment">
+        <textarea id="new-comment-body" placeholder="Leave a comment..."></textarea>
+        <button type="submit">Comment</button>
+      </form>
+    </main>
+
+    <script>
+      var link = document.querySelector(".like-link");
+      var form = document.querySelector("#new-comment");
+      var likeCounter = 0;
+
+      link.addEventListener("click", like);
+      form.addEventListener("submit", comment);
+
+      function like(event) {
+        event.preventDefault();
+        likeCounter++;
+        var likeSpan = document.querySelector("span");
+        likeSpan.textContent = likeCounter;
+      }
+
+      function comment(event) {
+        event.preventDefault();
+        var holder = document.querySelector("textarea");
+        var newText = holder.value;
+        holder.value= ""; //clears the textfield of content.
+        var commentsDiv = document.querySelector("#comments");
+        var comDiv = document.createElement("div");
+        comDiv.setAttribute("class","nComment");
+        commentsDiv.appendChild(comDiv);
+
+        var nParagraph = document.createElement("p");
+        nParagraph.textContent = newText;
+        comDiv.appendChild(nParagraph);
+      }
+    </script>
+  </body>
+</html>

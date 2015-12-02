@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Acme Products</title>
+  </head>
+  <body>
+
+  </body>
+  <script>
+
+/*HEY, SO I GUESS I WAS REALLY TIRED AT THE END OF CLASS WHEN THIS WAS ASSIGNED
+BECAUSE I THOUGHT THE ASSIGNMENT WAS TO RECREATE THE ACME SITE USING NOTHING
+BUT CODE (INCLUDING USING ONLY CODE FOR THE CSS) I SPOKE WITH AVAND AND HE
+SAID IT WAS OKAY TO DO IT THIS WAY AS IT STILL WORKS AND WAS ABOUT 4X THE WORK
+AS THE ORIGINAL ASSIGNMENT.*/
+
+  //create header
+  var bodyElement = document.querySelector("body");
+  bodyElement.style.backgroundImage = "url('images/background.png')";
+  bodyElement.style.padding = "0";
+  bodyElement.style.margin = "0";
+
+  var nheader = document.createElement("header");
+  nheader.style.borderBottom = "1px solid black";
+  nheader.style.backgroundColor="#c4c4c4";
+  nheader.style.height = "80px";
+  bodyElement.appendChild(nheader);
+
+//place logo image in header
+  var logoImage = document.createElement("img");
+  logoImage.setAttribute("src","images/acme-corp.jpg");
+  logoImage.setAttribute("width", "200px");
+  logoImage.setAttribute("height", "55px");
+  logoImage.style.cssFloat = "left";
+  logoImage.style.padding = "10px";
+  nheader.appendChild(logoImage);
+
+  // add navigation to the header
+  var nav = document.createElement("nav");
+  nav.style.listStyle = "none";
+  nav.style.cssFloat = "right";
+  nav.style.marginTop = "20px";
+  nheader.appendChild(nav);
+
+  // create unordered list
+  var uList = document.createElement("ul");
+  uList.style.display = "inline";
+  uList.style.listStyle = "none";
+  uList.cssFloat="left";
+  nav.appendChild(uList);
+
+  // add list element to the unordered list
+  var bLi = document.createElement("li");
+  var cLi = document.createElement("li");
+  bLi.style.textShadow = "1px 1px grey";
+  cLi.style.display = "inline";
+  bLi.style.display = "inline";
+  cLi.style.padding = "40px";
+
+  uList.appendChild(bLi);
+  uList.appendChild(cLi);
+
+
+  //create button
+  var hButton = document.createElement("button");
+  hButton.style.backgroundColor = "red";
+  hButton.style.padding = "8px 14px"
+  hButton.style.borderRadius = "6px" ;
+  hButton.style.backgroundColor = "#333cb5";
+  hButton.style.color = "#fff";
+  hButton.style.fontSize= "16px"
+  hButton.textContent= "Sign Up";
+
+  cLi.appendChild(hButton);
+
+  //create anchor tag
+  var products = document.createElement("a");
+  products.setAttribute("href", "http://www.sfgate.com");
+  products.style.fontFamily = "'Lucida Grande','san-serif'";
+  products.style.fontSize = "16px";
+  products.style.fontWeight = "bold";
+  products.style.color = "#fff";
+  products.style.textDecoration = "none";
+  products.textContent = "Products";
+  bLi.appendChild(products);
+
+  //create main div
+  var mainDiv = document.createElement("main");
+      mainDiv.style.width = "660px";
+      mainDiv.style.borderBottom = "1px solid grey";
+      mainDiv.style.margin="0 auto"
+      bodyElement.appendChild(mainDiv);
+
+  //create text box
+    var nSection = document.createElement("section");
+    nSection.style.boxSizing = "border-box";
+    nSection.style.width = "660px";
+    nSection.style.borderRadius = "10px"
+    nSection.style.backgroundColor = "#fff";
+    nSection.style.boxShadow = "2px 2px 10px grey";
+    nSection.style.marginTop = "40px";
+    nSection.style.paddingBottom = "16px";
+    nSection.style.marginBottom = "40px";
+    mainDiv.appendChild(nSection);
+
+  //create textheader
+  var titleText = document.createElement("h1");
+  titleText.textContent = "Welcome to ACME Corp!";
+  titleText.style.fontFamily = "'Lucida Grande', 'san-serif'";
+  titleText.style.fontSize = "24px ";
+  titleText.style.paddingLeft = "30px";
+  titleText.style.paddingTop = "30px";
+  titleText.style.color = "black";
+  nSection.appendChild(titleText);
+
+  //create the paragraph content
+  var bodyCopy = document.createElement("p");
+  bodyCopy.textContent = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
+  bodyCopy.style.fontFamily= "'Lucida Grande'";
+  bodyCopy.style.color= "black";
+  bodyCopy.style.paddingLeft = "30px"
+  bodyCopy.style.paddingRight = "30px";
+  nSection.appendChild(bodyCopy);
+
+  //create second paragraph element
+  var bodyCopy2 = document.createElement("p");
+  bodyCopy2.textContent = "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  bodyCopy2.style.fontFamily= "'Lucida Grande'";
+  bodyCopy2.style.paddingLeft = "30px"
+  nSection.appendChild(bodyCopy2);
+
+  //create footer
+  var footer = document.createElement("footer");
+  footer.textContent = "Copyright, 2015";
+  footer.style.fontFamily= "'Lucida Grande'";
+  footer.style.fontSize= "12px";
+  footer.style.color = "grey"
+  footer.style.textAlign = "center";
+  footer.style.paddingTop = "30px";
+  footer.style.width = "660px";
+  footer.style.margin = "0 auto";
+  footer.style.borderTop = "1px solid white";
+  bodyElement.appendChild(footer);
+
+  hButton.addEventListener('mouseover',bOver);
+  hButton.addEventListener('click',bClick);
+
+  function bOver(event){
+      hButton.style.cursor = "pointer";
+    }
+
+    function bClick(event){
+        window.open("http://laughingsquid.com/giant-frog-rescued-from-a-swimming-pool-meows-loudly-when-petted/");
+      }
+</script>
+</html>

@@ -20,6 +20,8 @@ function formSubmitted(event) {
 }
 
 function resultsReceived(results) {
+  var formElement = document.getElementById("movie-search-form");
+  formElement.reset()
   var placeHolder = document.querySelector("input");
   placeHolder.placeholder.clear;
   placeHolder.placeholder = "Movie Title";

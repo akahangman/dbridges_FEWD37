@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <p id = "counter"></p>
+  </body>
+</html>
+<script>
+
+
+var currentWeek = 68;
+var el = document.getElementById("counter");
+el.textContent = currentWeek;
+
+
+
+setInterval(function(){
+  var d = new Date();
+  //var day = d.getDay();
+  var hour = d.getHours();
+  var min = d.getMinutes();
+  var sec = d.getSeconds();
+
+  console.log("Time: " + hour + min + sec);
+
+  if (day == 4 && (hour == 0 && min == 1 && sec == 1)  ){
+    currentWeek++
+    el.textContent = currentWeek;
+  }
+
+}, 1000);
+
+</script>

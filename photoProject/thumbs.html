@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>One A Week SF</title>
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+    <style>
+        #overlay {
+         visibility: hidden;
+         position:fixed;
+         left: 0px;
+         top: 0px;
+         width:100%;
+         height:100%;
+         background-color:black;
+         z-index: 1000;
+    }
+    #thumbnails{
+      visibility:hidden;
+    }
+
+    #leftArrow{
+      position:absolute;
+      border-radius: 4px;
+      background-color:rgba(0,0,0,0.8);
+      top:46%;
+      left:1px;
+    }
+    #rightArrow{
+      position:absolute;
+      border-radius: 4px;
+      background-color:rgba(0,0,0,0.8);
+      right:0;
+      top:46%;
+    }
+    #closeBtn{
+      position:absolute;
+      right:0;
+      top:-24px;
+      background-color:rgba(0,0,0,0.8);
+      color:white;
+      font-size: 14px;
+      border: none;
+      margin-bottom: 10px;
+    }
+    #fullHolder{
+      position:relative;
+      min-width: 600px;
+      margin:0 auto;
+      margin-top: 40px;
+    }
+    #wrapper{
+      margin:0 auto;
+      max-width:1200px;
+      min-width:600px;
+    }
+    body {
+      background-color: black;
+      overflow-x: hidden
+    }
+    header{
+      height:60px;
+      background-color: black;
+    }
+    #logo{
+      float:left;
+      padding-left: 20px;
+    }
+    ul{
+      display:inline;
+      text-decoration: none;
+    }
+    li{
+      display:inline;
+      position:relative:
+    }
+    a{
+      text-decoration: none;
+    }
+    #thumbnails{
+      position:relative;
+      top:-17px;
+      left:20px;
+    }
+    #weekHolder{
+      float:right;
+      margin-right:8px;
+      margin-top:-34px;
+    }
+    #weekLogo{
+      top:-70;
+      right:20px;
+    }
+    p{
+      position:relative;
+      display:inline;
+      top:26px;
+      right:44px;
+      color:white;
+      font-family: "Open Sans", Arial, sans-serif;
+      font-weight:600;
+      font-size:30px;
+    }
+    #Divholder{
+      clear:both;
+    }
+    #searchForm{
+      position:relative;
+      left:40px;
+      top:14px;
+    }
+    #searchWord{
+      font-family: "Open Sans", Arial, sans-serif;
+      padding:4px;
+      font-size:16px;
+      text-align:center;
+    }
+    #info{
+      position:relative;
+      top:-18px;
+      left: 820px;
+    }
+    </style>
+  </head>
+  <div id="wrapper">
+  <body>
+    <div id="overlay">
+      <div id="fullHolder">
+        <button id="closeBtn">close x</button>
+        <div class="arrows">
+            <img id="leftArrow" src = "images/assets/leftArrow.png" alt="leftArrow"/>
+            <img id="rightArrow" src = "images/assets/rightArrow.png" alt="rightArrow"/>
+        </div>
+      </div>
+    </div>
+    <header>
+      <img id = "logo" src = "images/assets/logo.png" alt="logo" height="50px" width="72px"/>
+      <div id = "search">
+        <form id =searchForm>
+          <input id= "searchWord" type = "search" placeholder = "enter keyword"/>
+          <input id = "searchButton" type = "submit" value="search">
+        </form>
+          <img id = "thumbnails" src = "images/assets/thumbs.png" alt="thumbs" height="40px" width="56px"/>
+      <ul class = "headerButtons">
+        <li>
+          <a href = "info.html">
+            <img id = "info" src = "images/assets/info.png" alt="info" height="24px" width="66px"/>
+          </a>
+        </li>
+      </ul>
+      <div id="weekHolder">
+        <img id="weekLogo" src = "images/assets/week.png" alt="week number" height = "13px" width = "47px"/>
+        <p>73</p>
+      </div>
+    </header>
+    <div id="Divholder">
+
+    </div>
+    </div>
+  </body>
+</div>
+  <script src="photoObject.js"></script>
+  <script>
+  var thumbDiv = document.querySelector("#Divholder");
+  //var holderMaxWidth = Math.floor(window.screen.availWidth - (window.screen.availWidth * 0.24));
+  //document.querySelector('#fullHolder').style.maxWidth = holderMaxWidth + 'px';
+  document.querySelector('#fullHolder').style.maxWidth = "76%";
+  function loadThumbs(){
+  photosToRemove=[];
+  for (var i = 0; i < photosArray.length; i++) {
+    thumbholder = document.createElement("img");
+    thumbholder.setAttribute("id", "thumb"+i);
+    thumbholder.setAttribute("src", "images/thumbnails/" + photosArray[i].thumb);
+    thumbholder.style.margin = "8px";
+    thumbholder.style.border = "1px solid grey";
+    thumbholder.style.opacity = ".6";
+    thumbDiv.style.backgroundColor="black";
+    thumbDiv.appendChild(thumbholder);
+    thumbholder.addEventListener("mouseover",thumbOver);
+    thumbholder.addEventListener("mouseout",thumbOut);
+    thumbholder.addEventListener("click",thumbClick);
+}
+}
+  function thumbOver(e){
+    var tOver= e.target;
+    tOver.style.cursor = "pointer"
+    tOver.style.opacity = "1";
+    tOver.style.borderColor = "blue";
+  }
+
+  function thumbOut(e){
+    var tOut= e.target;
+    tOut.style.cursor = "default"
+    tOut.style.opacity = ".6";
+    tOut.style.borderColor = "grey";
+  }
+  var thumbClicked = "";
+  function thumbClick(e){
+    thumbClicked = e.target.id;
+    iNum = e.target.id.slice(5);
+    newNum = parseInt(iNum);
+    var cThumb = photosArray[iNum].thumb;
+    console.log("I am the thumb that was just clicked" + cThumb);
+    mainImage = photosArray[iNum].full;
+    var iCaption = photosArray[iNum].cutline;
+    var keyWord = photosArray[iNum].imageKeywords[0];
+    var week = photosArray[iNum].week;
+
+    var el = document.getElementById("overlay");
+    fullDiv = document.getElementById("fullHolder");
+    mainHolder = document.createElement("img");
+    mainHolder.setAttribute("src", "images/main/" + mainImage);
+    mainHolder.setAttribute("id", "largeImage");
+    mainHolder.style.width="100%";
+    //mainHolder.style.width="1000px";
+    fullDiv.appendChild(mainHolder);
+    el.style.visibility = (el.style.visibility = "visible");
+  }
+  var closeButton = document.getElementById("closeBtn");
+  closeButton.addEventListener("mouseover", closeOver);
+  closeButton.addEventListener("click", closeImage);
+
+  function closeOver(e){
+    var cOver= e.target;
+    cOver.style.cursor = "pointer"
+  }
+
+  function closeImage(e){
+      var cOver= e.target;
+      cOver.style.cursor = "pointer"
+      var el = document.getElementById("overlay");
+      var fullDiv = document.getElementById("fullHolder");
+      var bigImage = document.getElementById("largeImage");
+      fullDiv.removeChild(bigImage);
+      el.style.visibility = (el.style.visibility = "hidden");
+
+}
+leftArrow.addEventListener("click",nextLeft);
+rightArrow.addEventListener("click",nextRight);
+
+leftArrow.addEventListener("mouseover",overLeft);
+rightArrow.addEventListener("mouseover",overRight);
+
+leftArrow.addEventListener("mouseout",outLeft);
+rightArrow.addEventListener("mouseout",outRight);
+
+function outLeft(e){
+  leftArrow.style.backgroundColor = "rgba(0,0,0,0.8)"
+}
+
+function outRight(e){
+  rightArrow.style.backgroundColor = "rgba(0,0,0,0.8)"
+}
+
+function overLeft(e){
+  var cOver= e.target;
+  cOver.style.cursor = "pointer"
+  leftArrow.style.backgroundColor = "blue"
+}
+
+function overRight(e){
+  var cOver= e.target;
+  cOver.style.cursor = "pointer"
+  rightArrow.style.backgroundColor = "blue"
+}
+
+function nextLeft(e){
+  if(gotHereViaSearch){
+    searchLeft();
+  } else{
+  if (newNum==0){
+    newNum=photosArray.length;
+  }
+  newNum--;
+  console.log("I am the nextLeft newNum" + newNum)
+  mainImage = photosArray[newNum].full
+  mainHolder.setAttribute("src", "images/main/" + mainImage);
+  fullDiv.appendChild(mainHolder);
+  }
+}
+
+function nextRight(e){
+  if(gotHereViaSearch){
+    searchRight();
+  } else{
+  if (newNum == photosArray.length-1){
+    newNum = 0;
+    mainImage = photosArray[newNum].full
+    mainHolder.setAttribute("src", "images/main/" + mainImage);
+    fullDiv.appendChild(mainHolder);
+  } else {
+  newNum++;
+  mainImage = photosArray[newNum].full
+  mainHolder.setAttribute("src", "images/main/" + mainImage);
+  fullDiv.appendChild(mainHolder);
+      }
+    }
+  }
+
+function searchRight(){
+  var indexPositionSet = false;
+  var rightArrayIndex;
+  for (var i = 0; i < searchResults.length; i++) {
+    var arrayImageNum = searchResults[i].thumb
+    var arrayMinusJPG = arrayImageNum.substr(0, arrayImageNum.length-4);
+    if (!indexPositionSet && arrayMinusJPG == thumbClicked){
+      rightArrayIndex = i + 1;
+      if(rightArrayIndex < searchResults.length){
+      mainImage = searchResults[rightArrayIndex].full
+      mainHolder.setAttribute("src", "images/main/" + mainImage);
+      fullDiv.appendChild(mainHolder);
+
+      var nextThumb = searchResults[rightArrayIndex].thumb;
+      thumbClicked=nextThumb.substr(0, nextThumb.length-4);
+      indexPositionSet = true;
+      }
+    }
+  }
+}
+
+function searchLeft(){
+  var indexPositionSet = false;
+  var leftArrayIndex;
+  for (var i = 0; i < searchResults.length; i++) {
+    var arrayImageNum = searchResults[i].thumb
+    var arrayMinusJPG = arrayImageNum.substr(0, arrayImageNum.length-4);
+    if (!indexPositionSet && arrayMinusJPG == thumbClicked){
+      rightArrayIndex = i - 1;
+      if(rightArrayIndex >= 0){
+      mainImage = searchResults[rightArrayIndex].full
+      mainHolder.setAttribute("src", "images/main/" + mainImage);
+      fullDiv.appendChild(mainHolder);
+
+      var nextThumb = searchResults[rightArrayIndex].thumb;
+      thumbClicked=nextThumb.substr(0, nextThumb.length-4);
+      indexPositionSet = true;
+      }
+    }
+  }
+}
+
+loadThumbs();
+var results = [];
+var gotHereViaSearch=false;
+function search(keyword) {
+  for (var i = 0; i < photosArray.length; i++) {
+    var photo = photosArray[i];
+    for (var j = 0; j < photo.imageKeywords.length; j++) {
+      if (keyword == photo.imageKeywords[j]) {
+        results.push(photo);
+      }
+    }
+  }
+  return results;
+}
+var thumbIcon = document.getElementById("thumbnails");
+var photosToRemove=[];
+
+function searchTest(searchResults){
+for (var k = 0; k < photosArray.length; k++) {
+  var photoThumb = photosArray[k];
+  var counter = 0;
+  var resultLength=0;
+  for (var l = 0; l < searchResults.length; l++) {
+    if (photoThumb != searchResults[l]){
+      resultLength=searchResults.length;
+      var cThumb = photoThumb.thumb;
+      var thumbToRemove = cThumb.substr(0, cThumb.length-4);
+      counter++
+      if (counter == resultLength){
+        photosToRemove.push(thumbToRemove);
+        counter=0;
+        }
+      }
+    }
+  }
+  deleteThumbs();
+}
+
+function deleteThumbs(){
+  for (var y = 0; y < photosToRemove.length; y++) {
+    var itemToRemove = photosToRemove[y];
+    var removeEl = document.getElementById(itemToRemove);
+    thumbDiv.removeChild(removeEl);
+  }
+}
+
+function thumbLoaderOver(e){
+  var cOver= e.target;
+  cOver.style.cursor = "pointer"
+}
+
+function resetThumbs(){
+    searchTerm="";
+    photosToRemove = [];
+    results = [];
+    gotHereViaSearch=false;
+    var formReset = document.getElementById("searchForm");
+    formReset.style.visibility="visible";
+    thumbIcon.style.visibility="hidden"
+    for (var l = 0; l < searchResults.length; l++) {
+      var sThumb = searchResults[l].thumb;
+      var thumbsToRemove = sThumb.substr(0, sThumb.length-4);
+      var removeEl = document.getElementById(thumbsToRemove);
+      thumbDiv.removeChild(removeEl);
+        }
+      loadThumbs();
+  }
+
+function textVerify(e){
+    e.preventDefault();
+    var formReset = document.getElementById("searchForm");
+    var searchTerm = document.getElementById("searchWord").value.toLowerCase();
+    searchResults = search(searchTerm);
+      if(searchResults!=""){
+        formReset.reset();
+        formReset.style.visibility="hidden";
+        thumbIcon.style.visibility="visible";
+        gotHereViaSearch=true;
+        searchTest(searchResults);
+    }else{
+      formReset.reset();
+      var searchField = document.getElementById("searchWord")
+      searchField.placeholder = "No matches found";
+    }
+
+}
+
+searchButton.addEventListener("click",textVerify);
+thumbIcon.addEventListener("click",resetThumbs);
+thumbIcon.addEventListener("mouseover",thumbLoaderOver);
+/*
+console.log("I am the thumb image " + cThumb);
+console.log("I am the full sized image " + mainImage);
+console.log("I am the caption " + iCaption);
+console.log("I am the first keyword " + keyWord);
+console.log("I am the week ", week)
+*/
+
+  </script>
+</html>

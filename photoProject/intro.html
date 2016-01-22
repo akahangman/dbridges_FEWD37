@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>One a week SF</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+    <style>
+
+
+    #wrapper{
+      width:76%;
+      max-width:1400px;
+      margin:0 auto;
+    }
+    body{
+      margin:0;
+      padding:0;
+      background-color:black;
+    }
+
+    #holder{
+      position:relative;
+    }
+
+    .titleBackground{
+      border-right: 1px solid #acacac;
+      cursor:pointer;
+      position:absolute;
+      height:60px;
+      bottom: 160px;
+      right:0px;
+      width: 500px;
+      color:white;
+      padding:0;
+      background: blue; /* For browsers that do not support gradients */
+      background: -webkit-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,255,.7),rgba(0,0,255,.7),rgba(0,0,255,.7)); /*Safari 5.1-6*/
+      background: -o-linear-gradient(right,rgba(0,0,0,0),rgba(0,0,255,.7),rgba(0,0,255,.7),rgba(0,0,255,.7)); /*Opera 11.1-12*/
+      background: -moz-linear-gradient(right,rgba(0,0,0,0),rgba(0,0,255,.7),rgba(0,0,255,.7),rgba(0,0,255,.7)); /*Fx 3.6-15*/
+      background: linear-gradient(to right, rgba(0,0,0,0),rgba(0,0,255,.7),rgba(0,0,255,.7),rgba(0,0,255,.7)); /*Standard*/
+    }
+
+    .titleBar{
+      border-right: 1px solid #acacac;
+      position:absolute;
+      bottom: 160px;
+      height:60px;
+      right:0px;
+      width: 500px;
+      color:white;
+      padding:0;
+      background: black; /* For browsers that do not support gradients */
+      background: -webkit-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,.8),rgba(0,0,0,.8),rgba(0,0,0,.8)); /*Safari 5.1-6*/
+      background: -o-linear-gradient(right,rgba(0,0,0,0),rgba(0,0,0,.8),rgba(0,0,0,.8),rgba(0,0,0,.8)); /*Opera 11.1-12*/
+      background: -moz-linear-gradient(right,rgba(0,0,0,0),rgba(0,0,0,.8),rgba(0,0,0,.8),rgba(0,0,0,.8)); /*Fx 3.6-15*/
+      background: linear-gradient(to right, rgba(0,0,0,.0), rgba(0,0,0,.8),rgba(0,0,0,.8),rgba(0,0,0,.8)); /*Standard*/
+    }
+
+    ul {
+      position:relative;
+      bottom:10px;
+    }
+    li:first-child {
+    border-right: 2px solid white;
+    padding-right: 20px;
+    }
+
+    li{
+      text-decoration: none;
+      display:inline;
+      top:-6px;
+      left:30px;
+      font-family: "Open Sans", Arial, sans-serif;
+      font-weight: 300;
+      font-size: 36px;
+    }
+    #Explore{
+      position:relative;
+      font-family: "Open Sans", Arial, sans-serif;
+      font-weight: 400;
+      font-size:20px;
+    }
+
+    #SF{
+      font-family: "Open Sans", Arial, sans-serif;
+      font-weight: 700;
+      padding-left:40px;
+    }
+    </style>
+  </head>
+<div id="wrapper">
+  <body>
+    <div id="holder">
+      <div class="titleBar titleBackground">
+        <ul>
+        <li><span id="SF">SF </span>ONE A WEEK</li>
+        <li id="Explore">EXPLORE</li>
+        </div>
+      </div>
+    </div>
+</body>
+  </div>
+  <script>
+  //var holderMaxWidth = Math.floor(window.screen.availWidth - (window.screen.availWidth * 0.24));
+  //document.querySelector('#fullHolder').style.maxWidth = holderMaxWidth + 'px';
+
+  var divHolder = document.querySelector("#holder");
+  var randomNum = Math.floor((Math.random()*6));
+  var frontImages = ["carnival.jpg", "fire.jpg", "halloween.jpg", "paris.jpg", "critical.jpg", "dead.jpg"];
+  var imageHolder = document.createElement("img");
+  imageHolder.setAttribute("src", "images/front/" + frontImages[randomNum]);
+  imageHolder.style.width = "100%";
+  imageHolder.style.height = "auto";
+  imageHolder.style.marginTop ="40px";
+  divHolder.appendChild(imageHolder);
+
+  var buttonElement = document.querySelector(".titleBar");
+  buttonElement.addEventListener("mouseover", bOver);
+  buttonElement.addEventListener("mouseout", bOut);
+  buttonElement.addEventListener("click", bClick);
+
+  function bOver(e){
+    event.preventDefault();
+    buttonElement.classList.remove("titleBar");
+    buttonElement.classList.add("titleBackground");
+  }
+
+  function bOut(e){
+    event.preventDefault();
+    buttonElement.classList.remove("titleBackground");
+    buttonElement.classList.add("titleBar");
+  }
+
+  function bClick(e){
+    event.preventDefault();
+location.href = "thumbs.html";
+  }
+  </script>
+</html>

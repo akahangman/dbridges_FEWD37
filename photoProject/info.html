@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SF One A Week</title>
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+    <style>
+
+    #wrapper{
+      margin:0 auto;
+      max-width:1160px;
+      min-width:600px;
+    }
+    #overlay {
+      visibility: hidden;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width:100%;
+      height:100%;
+      background-color:rgba(0,0,0,0.9);
+      z-index: 1000;
+      }
+  #camera{
+    position:absolute;
+    top:200px;
+    left:180px;
+  }
+    #messageForm{
+      position:relative;
+      left:380px;
+      width:400px;
+    }
+    #eForm{
+      position:relative;
+      top:220px;
+      left:340px;
+    }
+    #userSubmit{
+      position:relative;
+      left:286px;
+      background: linear-gradient(#c8c8c8,#2f2f2f);
+      width:80px;
+      height:30px;
+      margin-top:8px;
+      border:1px solid black;
+      border-radius: 4px;
+      color:white;
+      background:grey;
+      font-family:Arial, sans-serif;
+      font-size: 14px;
+      text-align: center;
+    }
+    #eAddress{
+      height:50px;
+      margin-bottom:10px;
+      text-align: center;
+    }
+    #subjectBox{
+      height:50px;
+      margin-bottom:10px;
+      text-align:center;
+    }
+    #emailBody{
+      height:150px;
+      text-align:center;
+    }
+    #mailIcon{
+      float:right;
+      position:relative;
+      top:-36px;
+      right:4px;
+    }
+    .emailForm{
+      width:360px;
+      font-family: arial, sans-serif;
+      font-size: 18px;
+    }
+    #closeBtn{
+      position:relative;
+      padding:10px;
+      top:220px;
+      left:1030px;
+      color:white;
+      font-size: 14px;
+      border: none;
+      background-color:rgba(0,0,0,0);
+    }
+
+    body {
+      background-color: black;
+    }
+
+    header{
+      height:60px;
+      background-color: black;
+      margin-bottom:40px;
+    }
+
+    #logo{
+      float:left;
+      position:relative;
+      top:-8px;
+    }
+
+    li{
+      display:inline;
+      text-decoration: none;
+    }
+    a{
+      text-decoration: none;
+    }
+    #thumbs{
+      position:relative;
+      left:34px;
+      top:-2px;
+    }
+    #weekLogo{
+      position:relative;
+      left:32px;
+      top:-4px;
+    }
+    #weekHolder{
+      float:right;
+      margin-right:24px;
+      margin-top:-56px;
+    }
+    #weekNumber{
+      float:right;
+      position:relative;
+      top:-26px;
+      right:8px;
+      color:white;
+      font-family: "Open Sans", Arial, sans-serif;
+      font-weight:600;
+      font-size:30px;
+    }
+    #bodyCopy{
+      position:absolute;
+      top:-12px;
+      margin-top:40px;
+      margin-left:6px;
+      color:white;
+      font-family: "Open Sans", Arial, sans-serif;
+      font-weight:600;
+      font-size:30px;
+    }
+    #whiteBG{
+      width:100%;
+      position:relative;
+      top:-40px;
+      background-repeat: no-repeat;
+      background-image: url(images/assets/gradient.png);
+      background-color: white;
+    }
+    #textBlock{
+      position:absolute;
+      top:36px;
+      text-shadow: 4px 4px 6px rgba(0,0,0,0.2);
+    }
+    h1{
+      position:relative;
+      top:80px;
+      left:130px;
+      font-family: "Open Sans", Arial, sans-serif;
+      font-weight:600;
+      font-size:120px;
+    }
+    #bodyCopy{
+      position:relative;
+      left:130px;
+      width:320px;
+      color:black;
+      font-family: "Open Sans", Arial, sans-serif;
+      font-weight:400;
+      font-size:16px;
+    }
+    #photoBooth{
+      position:relative;
+      left:36%;
+      margin-bottom: -4px;
+    }
+    #gradient{
+      position:absolute;
+      left:10px;
+    }
+  </style>
+
+  </head>
+  <div id="wrapper">
+  <body>
+    <div id="overlay">
+        <img id = "camera" src = "images/assets/camera.png" alt="camera" />
+      <div id="fullHolder">
+        <button id="closeBtn">close x</button>
+        <div id= "messageForm">
+        <form id="eForm">
+          <input class = "emailForm" id= "eAddress" type = "email" placeholder = "Enter Your Email Address" onfocus="inBox()">
+          <input class = "emailForm" id= "subjectBox" type = "text" placeholder = "Enter A Subject">
+          <input class = "emailForm" id= "emailBody" type = "text" placeholder = "Enter A Message">
+          <input id = "userSubmit" type = "submit" value="Send">
+        </form>
+      </div>
+      </div>
+    </div>
+    <header>
+      <img id = "logo" src = "images/assets/logo.png" alt="logo" height="50px" width="72px"/>
+      <ul class = "headerButtons">
+        <li>
+          <a href = "thumbs.html">
+            <img id = "thumbs" src = "images/assets/thumbs.png" alt="thumbIcon" height="38px" width="60px"/>
+          </a>
+        </li>
+    </ul>
+      <div id="weekHolder">
+        <img id="weekLogo" src = "images/assets/week.png" alt="week number" height = "13px" width = "47px"/>
+        <p id = "weekNumber">73</p>
+      </div>
+    </header>
+    <div id="whiteBG">
+          <img id = "photoBooth" src = "images/assets/selfPortrait.png" alt="photoBooth"/>
+
+    </div>
+    <div id = "mailIcon">
+        <img id = "mailIcon" src = "images/assets/mailIcon.png" alt="mailIcon"/>
+    </div>
+    <div id="textBlock">
+      <h1>WHY?</h1>
+      <p id="bodyCopy">
+        I bought a new camera awhile back and at the time, I was scared that I would buy it and never use it. So, I made a deal with myself that I’d try and go out at least once a week for a year and try and take a good photo.</br></br>
+
+        I came close. I missed one week when I had an unexpected death in the family and there were times here and there when I sort of phoned it in, but for the most part I’m happy with my effort and kept going once the year was over although I take a week off every once in awhile.
+      </p>
+    </div>
+  </body>
+</div>
+
+  <script>
+    var email = document.getElementById("mailIcon");
+    email.addEventListener("click",iconClick);
+    email.addEventListener("mouseover",mailOver);
+
+    function mailOver(e){
+      var mOver = e.target;
+      mOver.style.cursor = "pointer"
+    }
+
+    function iconClick(e){
+    var el = document.getElementById("overlay");
+    el.style.visibility = (el.style.visibility = "visible");
+    }
+
+    var closeButton = document.getElementById("closeBtn");
+    closeButton.addEventListener("click", closeImage);
+    closeButton.addEventListener("mouseover", closeOver);
+
+    function closeOver(e){
+      var cOver= e.target;
+      cOver.style.cursor = "pointer"
+    }
+
+    function closeImage(e){
+    var forms = document.getElementById("eForm");
+    forms.reset();
+    var el = document.getElementById("overlay");
+    el.style.visibility = (el.style.visibility = "hidden");
+    }
+
+    function inBox(){
+     var tBox = document.getElementById("eAddress");
+     tBox.style.textAlign = "left";
+     tBox.style.fontSize = "20px"
+   }
+
+  </script>
+</html>

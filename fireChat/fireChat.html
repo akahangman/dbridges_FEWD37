@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title></title>
     <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+    <script src="http://f.cl.ly/items/2K2Z2g0L3v1q1I413j1O/strftime%20githubcomsamsonjsstrf.txt"></script>
   <style>
     #wrapper {
       margin:0 auto;
@@ -23,7 +24,7 @@
      height:100%;
      text-align:center;
      z-index: 1000;
-     background-color: rgba(0,0,0,0.8);
+     background-color: rgba(0,0,0,0.9);
 }
     p{
       font-family: Arial, san-serif;
@@ -118,27 +119,15 @@
   </body>
 </div>
   <script>
-/*
-Creating a chat message:
-1. Add a form
-2.Listen to the form submit (addEventListener)
-3. When form is submitted, save to Firebase (firebase.push({...}))
-4. When form is submitted, prevent the default (event.preventDefault)
-5. Reset the form (maybe even focus the text box)
-
-Display chat message:
-1. Create a div (or li) to contain the message
-2. Use the messageBody from Firebase to set the textContent
-  var message = snapshot.val(); //looks like {messageBody: "yo yo!, username: "avand"}
-  var message = s
-
-  */
+var now = new Date();
+now.getTime();
+console.log("I am now" + now);
 
   var firebase = new Firebase("https://blinding-inferno-7422.firebaseio.com");
   localStorage.clear();
   //THIS CODE HANDLES THE CREATION OF THE USERNAME
   var username = localStorage.getItem("username");
-  var noMessage=true;
+
 
   if(username==null){
       overlay();
@@ -165,6 +154,7 @@ Display chat message:
     submitButton.addEventListener("click", messageSubmitted);
 
     var message = new Object();
+    var noMessage=true;
 
     function messageSubmitted(e){
       event.preventDefault();
@@ -182,7 +172,6 @@ Display chat message:
         username: localStorage.getItem("username"),
         messageBody: document.querySelector("#textBox").value
       }
-
       firebase.push(message);
       console.log(message);
     };
@@ -194,21 +183,29 @@ Display chat message:
 
     function messageReceived(snapshot){
       var messageData = snapshot.val();
-      if (debug) debugger
       console.log("I am messageData", messageData.messageBody);
+      console.log("I am user", messageData.username);
       var messageReceivedUl = document.getElementById("messageHolder");
+      var newUserLi=document.createElement("li");
+      newUserLi.style.padding="6px";
+      newUserLi.style.color="#a9a9a9";
+      newUserLi.style.fontSize="16px";
+      newUserLi.style.fontFamily="arial, san-serif";
+      newUserLi.style.listStyleType = "none";
+      newUserLi.textContent = messageData.username;
+      messageReceivedUl.appendChild(newUserLi);
+
       var newReceivedLi=document.createElement("li");
-      newReceivedLi.style.padding="10px";
-      newReceivedLi.style.color="green";
+      newReceivedLi.style.paddingBottom="30px";
+      newReceivedLi.style.marginLeft= "10px";
+
+      newReceivedLi.style.color="#e6e6e6";
       newReceivedLi.style.fontSize="24px";
       newReceivedLi.style.fontFamily="arial, san-serif";
       newReceivedLi.style.listStyleType = "none";
       newReceivedLi.textContent = messageData.messageBody;
       messageReceivedUl.appendChild(newReceivedLi);
       document.getElementById("messageBox").reset();
-
     }
-
-    window.debug = false;
   </script>
 </html>

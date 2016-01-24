@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+  <style>
+    #wrapper {
+      margin:0 auto;
+    }
+    body{
+    background-color:black;
+    margin:0;
+    padding:0;
+    min-width: 800px;
+    }
+    #overlay {
+     visibility: hidden;
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+     background-color: rgba(0,0,0,0.8);
+}
+    p{
+      font-family: Arial, san-serif;
+      font-size: 24px;
+      color: #d3d3d3;
+      margin-top: 260px;
+      text-align:center;
+    }
+
+    #messageDisplay{
+    padding-top:40px;
+    }
+
+    #messageForm {
+      width:100%;
+      position:absolute;
+      bottom:0;
+      background-color: #676c6f;
+    }
+
+    #textBox{
+        height:80px;
+        width:80%;
+        margin:20px;
+        margin-right: 20px;
+        margin-left:80px;
+        border-radius: 12px;
+        font-family:Arial, sans-serif;
+        font-size: 30px;
+        color: #676c6f;
+        text-align: center;
+
+    }
+    #submitButton{
+      background: linear-gradient(#c8c8c8,#2f2f2f);
+      border:1px solid black;
+      border-radius: 8px;
+      padding:32px 24px;
+      color:white;
+      font-family:Arial, sans-serif;
+      font-size: 20px;
+      position:relative;
+      bottom:4px;
+      right:4px;
+    }
+
+    #createUserName{
+      position:relative;
+      top:280px;
+    }
+
+    #userBox{
+      width:200px;
+      height:30px;
+      text-align: center;
+    }
+
+    #userSubmit{
+      background: linear-gradient(#c8c8c8,#2f2f2f);
+      width:60px;
+      height:38px;
+      border:1px solid black;
+      border-radius: 4px;
+      color:white;
+      background:grey;
+      font-family:Arial, sans-serif;
+      font-size: 14px;
+    }
+</style>
+</head>
+  <div id="wrapper">
+  <body>
+    <div id=overlay>
+      <form id="createUserName">
+        <input id= "userBox" type = "text" placeholder = "Please Enter a Username">
+        <input id = "userSubmit" type = "submit" value="Create">
+      </form>
+    </div>
+    <div id= "messageDisplay">
+        <p id="messageStatus">No Messages</p>
+        <ul id="messageHolder">
+
+
+        </ul>
+    </div>
+    <div id = "messageForm">
+        <form id="messageBox">
+          <input id= "textBox" type = "text" placeholder = "Type your message here">
+          <input id = "submitButton" type = "submit" value="Send">
+        </form>
+    </div>
+  </body>
+</div>
+  <script>
+/*
+Creating a chat message:
+1. Add a form
+2.Listen to the form submit (addEventListener)
+3. When form is submitted, save to Firebase (firebase.push({...}))
+4. When form is submitted, prevent the default (event.preventDefault)
+5. Reset the form (maybe even focus the text box)
+
+Display chat message:
+1. Create a div (or li) to contain the message
+2. Use the messageBody from Firebase to set the textContent
+  var message = snapshot.val(); //looks like {messageBody: "yo yo!, username: "avand"}
+  var message = s
+
+  */
+
+  var firebase = new Firebase("https://blinding-inferno-7422.firebaseio.com");
+  localStorage.clear();
+  //THIS CODE HANDLES THE CREATION OF THE USERNAME
+  var username = localStorage.getItem("username");
+  var noMessage=true;
+
+  if(username==null){
+      overlay();
+  }
+
+  function overlay() {
+  el = document.getElementById("overlay");
+  el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+}
+
+  var userNameButton = document.getElementById("userSubmit");
+  userNameButton.addEventListener("click", nameSubmitted);
+
+  function nameSubmitted(e){
+    event.preventDefault();
+    username = document.getElementById("userBox").value;
+    message.username = document.getElementById("userBox").value;
+    localStorage.setItem("username", username);
+    el.style.visibility = "hidden";
+  }
+
+  //THIS CODE HANDLES THE MESSAGING
+    var submitButton = document.getElementById("submitButton");
+    submitButton.addEventListener("click", messageSubmitted);
+
+    var message = new Object();
+
+    function messageSubmitted(e){
+      event.preventDefault();
+      var form = document.getElementById("createUserName");
+      form.reset();
+      if(noMessage){
+      var messageDiv = document.getElementById("messageDisplay");
+      var child = document.getElementById("messageStatus");
+      messageDiv.removeChild(child);
+      noMessage=false;
+      }
+
+      //CREATE AN OBJECT THAT STORES THE USERNAME AND MESSAGE
+      message = {
+        username: localStorage.getItem("username"),
+        messageBody: document.querySelector("#textBox").value
+      }
+
+      firebase.push(message);
+      console.log(message);
+    };
+
+
+    //CODE FOR WHEN A MESSAGE IS RECEIVED VIA firebase
+
+    firebase.on('child_added', messageReceived);
+
+    function messageReceived(snapshot){
+      var messageData = snapshot.val();
+      if (debug) debugger
+      console.log("I am messageData", messageData.messageBody);
+      var messageReceivedUl = document.getElementById("messageHolder");
+      var newReceivedLi=document.createElement("li");
+      newReceivedLi.style.padding="10px";
+      newReceivedLi.style.color="green";
+      newReceivedLi.style.fontSize="24px";
+      newReceivedLi.style.fontFamily="arial, san-serif";
+      newReceivedLi.style.listStyleType = "none";
+      newReceivedLi.textContent = messageData.messageBody;
+      messageReceivedUl.appendChild(newReceivedLi);
+      document.getElementById("messageBox").reset();
+
+    }
+
+    window.debug = false;
+  </script>
+</html>

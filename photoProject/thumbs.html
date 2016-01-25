@@ -53,16 +53,26 @@
         thumbholder = document.createElement("img");
         thumbholder.setAttribute("id", "thumb"+i);
         thumbholder.setAttribute("src", "images/thumbnails/" + photosArray[i].thumb);
-        thumbholder.style.margin = "8px";
-        thumbholder.style.border = "1px solid grey";
-        thumbholder.style.opacity = ".6";
-        thumbDiv.style.backgroundColor="black";
-        thumbDiv.appendChild(thumbholder);
-        thumbholder.addEventListener("mouseover",thumbOver);
-        thumbholder.addEventListener("mouseout",thumbOut);
-        thumbholder.addEventListener("click",thumbClick);
+          thumbChecker(thumbholder);
+          thumbholder.style.margin = "8px";
+          thumbholder.style.border = "1px solid grey";
+          thumbholder.style.opacity = ".6";
+          thumbDiv.style.backgroundColor="black";
+          thumbDiv.appendChild(thumbholder);
+          thumbholder.addEventListener("mouseover",thumbOver);
+          thumbholder.addEventListener("mouseout",thumbOut);
+          thumbholder.addEventListener("click",thumbClick);
       }
     }
+    function thumbChecker(thumbholder){
+      thumbholder.onload = function(){
+        return(thumbholder);
+    }
+
+
+
+    }
+
   function thumbOver(e){
     var tOver= e.target;
     tOver.style.cursor = "pointer"
@@ -115,7 +125,6 @@
       var bigImage = document.getElementById("largeImage");
       fullDiv.removeChild(bigImage);
       el.style.visibility = (el.style.visibility = "hidden");
-
 }
 leftArrow.addEventListener("click",nextLeft);
 rightArrow.addEventListener("click",nextRight);

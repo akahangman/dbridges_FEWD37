@@ -46,15 +46,15 @@
   <script src="photoObject.js"></script>
   <script>
   var thumbDiv = document.querySelector("#Divholder");
+  var imageCounter = 0;
   document.querySelector('#fullHolder').style.maxWidth = "76%";
   function loadThumbs(){
     photosToRemove=[];
       for (var i = 0; i < photosArray.length; i++) {
-        thumbholder = document.createElement("img");
-        thumbholder.setAttribute("id", "thumb"+i);
-        thumbChecker(thumbholder);
-        thumbholder.setAttribute("src", "images/thumbnails/" + photosArray[i].thumb);
-
+          thumbholder = document.createElement("img");
+          thumbholder.setAttribute("id", "thumb"+i);
+          thumbChecker(thumbholder);
+          thumbholder.setAttribute("src", "images/thumbnails/" + photosArray[i].thumb);
           thumbholder.style.margin = "8px";
           thumbholder.style.border = "1px solid grey";
           thumbholder.style.opacity = ".6";
@@ -67,13 +67,16 @@
     }
     function thumbChecker(thumbholder){
       thumbholder.onload = function(){
+        if(thumbholder.complete){
           thumbDiv.appendChild(thumbholder);
-          return(thumbholder);
+          
+        }
     }
+  }
 
 
 
-    }
+
 
   function thumbOver(e){
     var tOver= e.target;

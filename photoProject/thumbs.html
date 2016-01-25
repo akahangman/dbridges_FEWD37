@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>One A Week SF</title>
+    <title>SF One a Week</title>
       <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
       <link rel="stylesheet" type="text/css" href="thumbStyles.css">
   </head>
@@ -46,7 +46,6 @@
   <script src="photoObject.js"></script>
   <script>
   var thumbDiv = document.querySelector("#Divholder");
-  var imageCounter = 0;
   document.querySelector('#fullHolder').style.maxWidth = "76%";
   function loadThumbs(){
     photosToRemove=[];
@@ -69,8 +68,7 @@
       thumbholder.onload = function(){
         if(thumbholder.complete){
           thumbDiv.appendChild(thumbholder);
-          
-        }
+        } else { thumbChecker();}
     }
   }
 

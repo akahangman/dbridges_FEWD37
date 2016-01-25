@@ -47,32 +47,36 @@
   <script>
   var thumbDiv = document.querySelector("#Divholder");
   document.querySelector('#fullHolder').style.maxWidth = "76%";
-  var thumbholder;
+
   function loadThumbs(){
+    var imageCounter = 0;
+    var loopCounter = 0;
     photosToRemove=[];
       for (var i = 0; i < photosArray.length; i++) {
           thumbholder = document.createElement("img");
           thumbholder.setAttribute("id", "thumb"+i);
+          thumbChecker(thumbholder);
           thumbholder.setAttribute("src", "images/thumbnails/" + photosArray[i].thumb);
           thumbholder.style.margin = "8px";
           thumbholder.style.border = "1px solid grey";
           thumbholder.style.opacity = ".6";
           thumbDiv.style.backgroundColor="black";
 
-
-          thumbholder.addEventListener("load",thumbChecker);
           thumbholder.addEventListener("mouseover",thumbOver);
           thumbholder.addEventListener("mouseout",thumbOut);
           thumbholder.addEventListener("click",thumbClick);
       }
     }
-    function thumbChecker(e){
-          var loadThisThumb=e.target;
-            if(loadThisThumb.complete){
-               console.log("I am loadThisThumb", loadThisThumb)
-               thumbDiv.appendChild(loadThisThumb);
+    function thumbChecker(thumbholder){
+      thumbholder.onload = function(){
+        if(thumbholder.complete){
+          thumbDiv.appendChild(thumbholder);
+        } else {
+          console.log("I failed to load")
+          thumbChecker();
         }
-      }
+    }
+  }
 
   function thumbOver(e){
     var tOver= e.target;

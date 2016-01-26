@@ -5,7 +5,7 @@ var photosArray = [
   {thumb: "thumb1.jpg", full: "full1.jpg", week: "Week 2", cutline:"Old lady resting on Market Street", imageKeywords:["week 2","lady","resting","bored"]},
   {thumb: "thumb2.jpg", full: "full2.jpg", week: "Week 3", cutline:"Reading outside a bar in the Tenderloin", imageKeywords:["week 3","reading","tenderloin"]},
   {thumb: "thumb3.jpg", full: "full3.jpg", week: "Week 4", cutline:"Hookah smokers Tenderloin", imageKeywords:["week 4","hookah","tenderloin"]},
-  {thumb: "thumb4.jpg", full: "full4.jpg", week: "Week 5", cutline:"Smoke break Chinatown", imageKeywords:["chinatown","smoking","break"]},
+  {thumb: "thumb4.jpg", full: "full4.jpg", week: "Week 5", cutline:"Old man in the shadows", imageKeywords:["smoking","old","tenderloin"]},
   {thumb: "thumb5.jpg", full: "full5.jpg", week: "Week 5", cutline:"Smoke break Chinatown", imageKeywords:["chinatown","smoking","break"]},
   {thumb: "thumb6.jpg", full: "full6.jpg", week: "Week 6", cutline:"Tarot card reader in the Mission", imageKeywords:["tarot card","mission","psychic"]},
   {thumb: "thumb7.jpg", full: "full7.jpg", week: "Week 7", cutline:"Street scene in the Tenderloin", imageKeywords:["street","tenderloin"]},

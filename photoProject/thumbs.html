@@ -67,6 +67,9 @@
           thumbholder.addEventListener("click",thumbClick);
       }
     }
+
+    loadThumbs();
+
     function thumbChecker(thumbholder){
       thumbholder.onload = function(){
         if(thumbholder.complete){
@@ -97,9 +100,7 @@
     iNum = e.target.id.slice(5);
     newNum = parseInt(iNum);
     var cThumb = photosArray[iNum].thumb;
-    console.log("I am the thumb that was just clicked" + cThumb);
     mainImage = photosArray[iNum].full;
-    var iCaption = photosArray[iNum].cutline;
     var keyWord = photosArray[iNum].imageKeywords[0];
     var week = photosArray[iNum].week;
 
@@ -109,7 +110,6 @@
     mainHolder.setAttribute("src", "images/main/" + mainImage);
     mainHolder.setAttribute("id", "largeImage");
     mainHolder.style.width="100%";
-    //mainHolder.style.width="1000px";
     fullDiv.appendChild(mainHolder);
     el.style.visibility = (el.style.visibility = "visible");
   }
@@ -234,8 +234,6 @@ function searchLeft(){
     }
   }
 }
-
-loadThumbs();
 var results = [];
 var gotHereViaSearch=false;
 function search(keyword) {
@@ -321,7 +319,6 @@ function textVerify(e){
     }
 
 }
-
 searchButton.addEventListener("click",textVerify);
 thumbIcon.addEventListener("click",resetThumbs);
 thumbIcon.addEventListener("mouseover",thumbLoaderOver);

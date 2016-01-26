@@ -55,12 +55,13 @@
       for (var i = 0; i < photosArray.length; i++) {
           thumbholder = document.createElement("img");
           thumbholder.setAttribute("id", "thumb"+i);
-          thumbChecker(thumbholder);
+          //thumbChecker(thumbholder);
           thumbholder.setAttribute("src", "images/thumbnails/" + photosArray[i].thumb);
           thumbholder.style.margin = "8px";
           thumbholder.style.border = "1px solid grey";
           thumbholder.style.opacity = ".6";
           thumbDiv.style.backgroundColor="black";
+          thumbDiv.appendChild(thumbholder);
 
           thumbholder.addEventListener("mouseover",thumbOver);
           thumbholder.addEventListener("mouseout",thumbOut);
